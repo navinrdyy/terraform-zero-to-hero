@@ -22,7 +22,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'cd Day-4/prereq && terraform init && terraform plan && terraform apply'
+                sh 'cd Day-4/prereq && terraform init && terraform plan && terraform apply -auto-approve'
                 
             }
         }
