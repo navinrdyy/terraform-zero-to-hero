@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        stage('checkout') {
+            steps {
+                git branch: 'jenkinstest' url: 'https://github.com/navinrdyy/terraform-zero-to-hero.git'
+                
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'cd Day-4/prereq && terraform init && terraform plan'
+                
+            }
+        }
+
+        
+    }
+}
