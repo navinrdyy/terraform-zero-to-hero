@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+
+    environment {
+        TF_VAR_ec2_instance_type = "${params.EC2_INSTANCE_TYPE}"
+        TF_VAR_ec2_instance_name = "${params.EC2_INSTANCE_name}"
+        TF_VAR_ec2_ami = "${params.EC2_AMI}"
+    }
+
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        stage('checkout') {
+            steps {
+                git branch: 'jenkinstest', url: 'https://github.com/navinrdyy/terraform-zero-to-hero.git'
+                
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'cd Day-4 && terraform init && terraform plan'
+                
+            }
+        }
+
+        
+    }
+}
