@@ -9,7 +9,7 @@ pipeline {
         }
         stage('checkout') {
             steps {
-                git branch: 'jenkinstest' url: 'https://github.com/navinrdyy/terraform-zero-to-hero.git'
+                git branch: 'jenkinstest', url: 'https://github.com/navinrdyy/terraform-zero-to-hero.git'
                 
             }
         }
