@@ -1,6 +1,12 @@
 pipeline {
     agent any
 
+    environment {
+        TF_VAR_s3_bkt_name = "${params.S3_BUCKET_NAME}"
+        TF_VAR_dynamo_tbl_name = "${params.DYNAMO_TABLE_NAME}"
+    }
+
+
     stages {
         stage('Hello') {
             steps {
